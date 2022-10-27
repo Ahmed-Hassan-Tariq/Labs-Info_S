@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class labs {
     private String labName;
     private String labAttendant;
@@ -34,22 +38,30 @@ public class labs {
     }
 
 
-    public void pcCreator(){
+    public void pcCreator() throws IOException {
+        File f2 = new File("Computers.dat");
+        FileWriter wComputers = new FileWriter(f2,true);
+
       for (int i  = 0; i < computersList.length;i++) {
           if (computersList[i] == null) {
               computersList[i] = new Computers("IBM", i);
+              wComputers.write(computersList[i].getModel()+ "," +
+                      computersList[i].getId()+"\n");
 
           }
       }
+      wComputers.close();
     }
 
 
     public void printpcs(){
 
+
         for (int i=0; i < computersList.length; i++) {
 
             if(computersList[i]!=null) {
-                computersList[i].PrintPc();
+//                computersList[i].PrintPc();
+
             }
 
         }
